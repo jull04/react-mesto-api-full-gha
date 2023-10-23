@@ -1,0 +1,11 @@
+.auth__error {
+  all: unset;
+  font-weight: 400;
+  font-size: .75em;
+  line-height: 1.15;
+  color: #f00;
+  opacity: 0;
+  transition: .3s;
+  min-height: 30px;
+  justify-content: left;
+}
