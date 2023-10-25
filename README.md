@@ -8,8 +8,8 @@
 
 ## Ссылки на проект
 
-IP-адрес 158.160.96.120
+IP 158.160.96.120
 
-Frontend https://...
+Frontend https://juls.nomoredomainsrocks.ru
 
-Backend https://...
+Backend https://api.juls.nomoredomainsrocks.ru
