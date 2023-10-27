@@ -56,13 +56,13 @@ function App() {
         .then((res) => {
           if (res) {
             setLoggedIn(true);
-            setEmail(res.data.email);
+            setEmail(res.email);
             navigate('/', {replace: true})
           }
         })
         .catch((error => console.log(`Ошибка проверки токена ${error}`)))
     }
-  }, []);
+  }, [navigate]);
 
   //Обработка запроса на регистрацию
   function handleRegister(email, password) {
@@ -98,7 +98,7 @@ function App() {
       if (data.token) {
         localStorage.setItem("jwt", data.token);
         setEmail(email);
-        handleLoggedIn(true);
+        handleLoggedIn();
         navigate('/', {replace: true})
       }
     })
@@ -150,7 +150,7 @@ function App() {
   }
 
   function handleCardLike (card) {
-    const isLike = card.likes.some((element) => currentUser._id === element);
+    const isLike = card.likes.some((element) => currentUser._id === element._id);
     if (isLike) {
       api.deleteLike(card._id, localStorage.jwt)
       .then((res) => {
@@ -160,7 +160,7 @@ function App() {
       })
       .catch(error => console.log(`Ошибка снятия лайка ${error}`));
     } else {
-      api.putLike(card._id, true, localStorage.jwt)
+      api.putLike(card._id, localStorage.jwt)
       .then((res) => {
         setCards((state) =>
           state.map((c) => (c._id === card._id ? res : c))
