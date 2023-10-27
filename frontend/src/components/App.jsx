@@ -38,7 +38,7 @@ function App() {
 
   useEffect(() => {
     if (loggedIn) {
-      Promise.all([api.getInfo(), api.getCards()])
+      Promise.all([api.getInfo(localStorage.jwt), api.getCards(localStorage.jwt)])
       .then(([dataUser, dataCard]) => {
         setCurrentUser(dataUser);
         setCards(dataCard);
@@ -49,11 +49,10 @@ function App() {
 
   // Проверка токена при загрузке страницы
   useEffect(() => {
-    const token = localStorage.getItem('token');
     // если у пользователя есть токен в localStorage, 
     // функция проверит, действующий он или нет
-    if (token){
-      checkToken(token)
+    if (localStorage.jwt) {
+      checkToken(localStorage.jwt)
         .then((res) => {
           if (res) {
             setLoggedIn(true);
@@ -97,8 +96,9 @@ function App() {
     authorize(email, password)
     .then((data) => {
       if (data.token) {
+        localStorage.setItem("jwt", data.token);
         setEmail(email);
-        handleLoggedIn();
+        handleLoggedIn(true);
         navigate('/', {replace: true})
       }
     })
@@ -113,7 +113,7 @@ function App() {
   //Выход из системы
   function handleLogout() {
     setLoggedIn(false);
-    localStorage.removeItem("token");
+    localStorage.removeItem("jwt");
     navigate("/sign-in");
     setEmail("");
   }
@@ -150,9 +150,9 @@ function App() {
   }
 
   function handleCardLike (card) {
-    const isLike = card.likes.some((element) => currentUser._id === element._id);
+    const isLike = card.likes.some((element) => currentUser._id === element);
     if (isLike) {
-      api.deleteLike(card._id)
+      api.deleteLike(card._id, localStorage.jwt)
       .then((res) => {
         setCards((state) =>
           state.map((c) => (c._id === card._id ? res : c))
@@ -160,7 +160,7 @@ function App() {
       })
       .catch(error => console.log(`Ошибка снятия лайка ${error}`));
     } else {
-      api.putLike(card._id, true)
+      api.putLike(card._id, true, localStorage.jwt)
       .then((res) => {
         setCards((state) =>
           state.map((c) => (c._id === card._id ? res : c))
@@ -171,7 +171,7 @@ function App() {
   }
 
   function handleDeleteSubmit() {
-    api.deleteCard(deleteCardId)
+    api.deleteCard(deleteCardId, localStorage.jwt)
     .then(() => {
       setCards((state) =>
         state.filter((card) => {
@@ -186,7 +186,7 @@ function App() {
   }
 
   function handleUpdateUser(dataUser, reset) {
-    api.setUserInfo(dataUser)
+    api.setUserInfo(dataUser, localStorage.jwt)
     .then(res => {
       setCurrentUser(res);
       closeAllPopups()
@@ -198,7 +198,7 @@ function App() {
   }
 
   function handleUpdateAvatar(dataUser, reset){
-    api.setAvatar(dataUser)
+    api.setAvatar(dataUser, localStorage.jwt)
     .then(res => {
       setCurrentUser(res);
       closeAllPopups()
@@ -210,7 +210,7 @@ function App() {
   }
 
   function handleAddPlace(cardInfo, reset){
-    api.addCard(cardInfo)
+    api.addCard(cardInfo, localStorage.jwt)
     .then((res) => {
       setCards([res, ...cards]);
       closeAllPopups()

@@ -5,7 +5,7 @@ function Like({myId, card, onCardLike}) {
   const [isLike, setIsLike] = React.useState(false);
 
   useEffect(() => {
-    setIsLike(card.likes.some((element) => myId === element._id))
+    setIsLike(card.likes.some((element) => myId === element))
   }, [card, myId])
 
   return (

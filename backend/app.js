@@ -1,6 +1,8 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const { errors } = require('celebrate');
+const cors = require('cors');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
@@ -8,7 +10,11 @@ const errorHandler = require('./middlewares/error-handler');
 
 const { PORT = 3000, DB_URL = 'mongodb://127.0.0.1:27017/mestodb' } = process.env;
 
+console.log(process.env)
+
 const app = express();
+
+app.use(cors());
 
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,

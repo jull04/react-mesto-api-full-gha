@@ -5,7 +5,7 @@ import Like from './Like';
 function Card ({card, onCardClick, onDeleteCard, onCardLike}) {
 
   const currentUser = useContext(CurrentUserContext);
-  const isOwn = currentUser._id===card.owner._id; 
+  const isOwn = currentUser._id===card.owner; 
 
   function handleClick() {
     onCardClick(card);

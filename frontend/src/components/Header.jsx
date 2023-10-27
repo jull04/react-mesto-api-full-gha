@@ -1,27 +1,8 @@
 import React from 'react';
 import { Routes, Route, Link} from "react-router-dom";
-import burger from '../images/burger.svg';
-import closeBtn from '../images/close-burger-menu.svg';
 
 function Header({loggedIn, onLogout, email}) {
 
-  const [menu, setMenu] = React.useState(false);
-  const [scroll, setScroll] = React.useState(0);
-
-  function handleOpenMenu() {
-    setMenu(!menu)
-  }
-
-  function handleScroll() {
-    setScroll(window.scrollY);
-  };
-
-  //При скролле вниз, меню само закрывается
-  React.useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-  
 
   return (
     <header className="header">
