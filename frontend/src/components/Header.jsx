@@ -3,7 +3,6 @@ import { Routes, Route, Link} from "react-router-dom";
 
 function Header({loggedIn, onLogout, email}) {
 
-
   return (
     <header className="header">
       <div className="header__logo"/>

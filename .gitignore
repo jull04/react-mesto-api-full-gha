@@ -19,7 +19,7 @@ node_modules
 /coverage
 
 # production
-/build
+build
 
 # misc
 .env
