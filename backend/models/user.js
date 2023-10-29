@@ -6,13 +6,13 @@ const { urlRegex, emailRegex } = require('../utils/constants');
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
-    default: 'Жак-Ив Кусто',
+    default: 'Хелоу',
     minlength: [2, 'Минимально количесвто символов - 2'],
     maxlength: [30, 'Максимальное количесвто символов - 30'],
   },
   about: {
     type: String,
-    default: 'Исследователь',
+    default: 'Добавляйте картинки',
     minlength: [2, 'Минимально количесвто символов - 2'],
     maxlength: [30, 'Максимальное количесвто символов - 30'],
   },
