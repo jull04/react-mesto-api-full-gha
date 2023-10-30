@@ -40,7 +40,7 @@ function Login ({onLogin}) {
             value={values.password || ""}
             onChange={handleChange}
           />
-          <span className="autho__error auth__error_visible">{errors.password}</span>
+          <span className="auth__error auth__error_visible">{errors.password}</span>
           <div className="auth__button-container">
             <button disabled={!isValid} type="submit" className={`auth__button ${isValid ? "" : "auth__button_disabled"}`}>
               Войти
