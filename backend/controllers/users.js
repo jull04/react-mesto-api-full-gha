@@ -1,13 +1,13 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
-const { SECRET_KEY = 'mesto' } = process.env;
 const { HTTP_STATUS_OK, HTTP_STATUS_CREATED } = require('http2').constants;
 const mongoose = require('mongoose');
 const User = require('../models/user');
 const BadRequestError = require('../errors/BadRequestError');
 const NotFoundError = require('../errors/NotFoundError');
 const ConflictError = require('../errors/ConflictError');
+const { SECRET_KEY } = require('../utils/config');
 
 module.exports.getUsers = (req, res, next) => {
   User.find({})

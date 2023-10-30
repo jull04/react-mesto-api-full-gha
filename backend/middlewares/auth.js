@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 
-const { SECRET_KEY = 'mesto' } = process.env;
+const { SECRET_KEY } = require('../utils/config');
 const UnautorizedError = require('../errors/UnauthorizedError');
 
 // eslint-disable-next-line consistent-return
