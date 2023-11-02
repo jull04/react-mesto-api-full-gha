@@ -4,3 +4,19 @@
   margin: 0;
   padding: 0;
 }
+
+@media screen and (max-width: 767px) {
+  .header__links {
+    align-items: center;
+    border-bottom: 1px solid rgba(84,84,84,.7);
+    flex-direction: column;
+    justify-content: center;
+    left: 0;
+    overflow: hidden;
+    padding-top: 0;
+    position: absolute;
+    top: 0;
+    visibility: hidden;
+    width: 100%;
+  }
+}

@@ -110,14 +110,6 @@ function App() {
     })
   }
 
-  //Выход из системы
-  function handleLogout() {
-    setLoggedIn(false);
-    localStorage.removeItem("jwt");
-    navigate("/sign-in");
-    setEmail("");
-  }
-
   function handleEditProfileClick() {
     setEditPopupOpen(true)
   }
@@ -224,7 +216,7 @@ function App() {
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page__content">
-        <Header loggedIn={loggedIn} onLogout={handleLogout} email={email}/>
+        <Header loggedIn={loggedIn} email={email}/>
         <Routes>
           <Route path="/sign-up" element={<Register onRegister={handleRegister}/>}/>
           <Route path="/sign-in" element={<Login onLogin={handleLogin}/>}/>

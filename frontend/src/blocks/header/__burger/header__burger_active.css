@@ -1,0 +1,4 @@
+.header__burger_active {
+  background-image: url(../../../images/close.svg);
+  background-size: 20px 20px;
+}

@@ -9,6 +9,10 @@
 @import url(./blocks/header/__links/header__links.css);
 @import url(./blocks/header/__link/header__link.css);
 @import url(./blocks/header/__email/header__email.css);
+@import url(./blocks/header/__burger/header__burger.css);
+@import url(./blocks/header/__burger/header__burger_active.css);
+@import url(./blocks/header/header_opened.css);
+@import url(./blocks/header/__links/header__links_opened.css);
 
 @import url(./blocks/profile/profile.css);
 @import url(./blocks/profile/__avatar/profile__avatar.css);
@@ -64,6 +68,3 @@
 @import url(./blocks/auth/__link/auth__link.css);
 @import url(./blocks/auth/__error/auth__error.css);
 @import url(./blocks/auth/__error/_visible/auth__error_visible.css);
-
-
-
