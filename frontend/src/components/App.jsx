@@ -108,7 +108,7 @@ function App() {
       setSuccessInfoTooltipStatus(false)
       console.log(`Ошибка авторизации ${error}`);
     })
-
+  }
 
   function handleEditProfileClick() {
     setEditPopupOpen(true)
@@ -275,7 +275,6 @@ function App() {
       </div>
     </CurrentUserContext.Provider>
   );
-}
 }
 
 export default App;
