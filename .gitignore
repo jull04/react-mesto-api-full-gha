@@ -7,6 +7,5 @@ logs
 node_modules
 .pnp
 .pnp.js
-build
 .env
 npm-debug.log*

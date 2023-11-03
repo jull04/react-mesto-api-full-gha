@@ -10,6 +10,3 @@ root.render(
     <App/>
   </BrowserRouter>
 );
-
-
-
